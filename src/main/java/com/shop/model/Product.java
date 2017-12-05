@@ -73,12 +73,14 @@ public class Product implements Model {
         Product product = (Product) o;
 
         if (!name.equals(product.name)) return false;
+        if (prise != null ? !prise.equals(product.prise) : product.prise != null) return false;
         return manufacturer.equals(product.manufacturer);
     }
 
     @Override
     public int hashCode() {
         int result = name.hashCode();
+        result = 31 * result + (prise != null ? prise.hashCode() : 0);
         result = 31 * result + manufacturer.hashCode();
         return result;
     }
