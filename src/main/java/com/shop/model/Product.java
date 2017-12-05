@@ -11,7 +11,7 @@ import java.util.UUID;
 public class Product implements Model {
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "uuid2")//todo
+    @GenericGenerator(name = "UUID", strategy = "uuid2")
     @Column(name = "product_id")
     private UUID id;
     @Column(name = "product_name")
@@ -63,6 +63,24 @@ public class Product implements Model {
 
     public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+
+        if (!name.equals(product.name)) return false;
+        return manufacturer.equals(product.manufacturer);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + manufacturer.hashCode();
+        return result;
     }
 
     @Override

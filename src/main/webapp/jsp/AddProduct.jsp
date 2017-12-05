@@ -23,7 +23,7 @@
         %>
     </select><br>
     <br>
-    <input hidden name="choice" value="products"/>
+
     <input type="submit" value="Add"/>
 </form>
 </body>

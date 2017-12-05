@@ -21,8 +21,13 @@ public class AddProduct extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        new ProductDAO().save(new Product(req.getParameter("name"), new BigDecimal(req.getParameter("prise")),
-                new ManufacturerDAO().findByName(req.getParameter("manufacturer"))));
+        ProductDAO dao= new ProductDAO();
+        Product product=new Product(req.getParameter("name"), new BigDecimal(req.getParameter("prise")),
+                new ManufacturerDAO().findByName(req.getParameter("manufacturer")));
+        if (dao.findByName(req.getParameter("name")).equals(product)){
+            resp.getWriter().println( "<script type=\"text/javascript\">alert(\"this manufacturer exist\");</script>");
+        }
+        else dao.save(product);
         new GetAllProducts().doGet(req,resp);
     }
 

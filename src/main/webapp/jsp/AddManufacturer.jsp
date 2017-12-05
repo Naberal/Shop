@@ -8,7 +8,6 @@
 <form action="/AddManufacturer" method="POST">
     <p>Manufacturer name</p>
     <input required type="text" name="name"/><br>
-    <input hidden name="choice" value="Manufacturer"/>
     <input type="submit" value="Add"/>
 </form>
 </body>

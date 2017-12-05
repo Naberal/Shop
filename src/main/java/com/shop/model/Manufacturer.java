@@ -12,7 +12,7 @@ import java.util.UUID;
 public class Manufacturer implements Model {
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "uuid2")//todo
+    @GenericGenerator(name = "UUID", strategy = "uuid2")
     @Column(name = "manufacturer_id")
     private UUID id;
     @Column(name = "manufacturer_name")
